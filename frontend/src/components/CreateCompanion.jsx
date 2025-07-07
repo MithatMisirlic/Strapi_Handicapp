@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const CreateCompanion = () => {
+export default function CreateCompanion() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [userId, setUserId] = useState('');
@@ -19,14 +19,12 @@ const CreateCompanion = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // If using Authenticated role:
-                    // 'Authorization': `Bearer YOUR_JWT`
                 },
                 body: JSON.stringify({
                     data: {
                         FirstName: firstName,
                         LastName: lastName,
-                        user: parseInt(userId)
+                        users_permissions_user: parseInt(userId)
                     }
                 })
             });
@@ -49,8 +47,8 @@ const CreateCompanion = () => {
     };
 
     return (
-        <div style={{ maxWidth: '400px', margin: '2rem auto', padding: '1rem', border: '1px solid #ccc', borderRadius: '8px' }}>
-            <h2>Create Companion</h2>
+        <div>
+            <h2>Create Companion Account</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -59,7 +57,6 @@ const CreateCompanion = () => {
                     onChange={(e) => setFirstName(e.target.value)}
                     required
                 />
-                <br /><br />
                 <input
                     type="text"
                     placeholder="Last Name"
@@ -67,7 +64,6 @@ const CreateCompanion = () => {
                     onChange={(e) => setLastName(e.target.value)}
                     required
                 />
-                <br /><br />
                 <input
                     type="number"
                     placeholder="User ID"
@@ -75,7 +71,6 @@ const CreateCompanion = () => {
                     onChange={(e) => setUserId(e.target.value)}
                     required
                 />
-                <br /><br />
                 <button type="submit" disabled={loading}>
                     {loading ? 'Creating...' : 'Create Companion'}
                 </button>
@@ -83,6 +78,4 @@ const CreateCompanion = () => {
             <p>{message}</p>
         </div>
     );
-};
-
-export default CreateCompanion;
+}
