@@ -1,0 +1,89 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Event",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Description": {
+      "type": "string",
+      "required": true
+    },
+    "nameOfTheEvent": {
+      "type": "string",
+      "required": true
+    },
+    "startTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "endTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "maxCapacity": {
+      "type": "integer",
+      "required": true
+    },
+    "eventType": {
+      "type": "enumeration",
+      "enum": [
+        "Concert",
+        "Public speach",
+        "Something more"
+      ],
+      "required": true
+    },
+    "eventPicture": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "langueges": {
+      "type": "enumeration",
+      "enum": [
+        "English",
+        "German"
+      ]
+    },
+    "seatMaps": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "website": {
+      "type": "string"
+    },
+    "locations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::location.location",
+      "mappedBy": "events"
+    },
+    "tickets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ticket.ticket",
+      "mappedBy": "event"
+    },
+    "accessibility_features": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::accessibility-feature.accessibility-feature",
+      "mappedBy": "events"
+    }
+  }
+}

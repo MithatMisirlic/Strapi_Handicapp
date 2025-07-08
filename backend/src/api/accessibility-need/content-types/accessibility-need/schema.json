@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "accessibility_needs",
+  "info": {
+    "singularName": "accessibility-need",
+    "pluralName": "accessibility-needs",
+    "displayName": "Accessibility Need",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nameOfTheNeed": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "accessibility_needs"
+    }
+  }
+}

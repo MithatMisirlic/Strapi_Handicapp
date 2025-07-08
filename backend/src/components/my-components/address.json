@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_my_components_addresses",
+  "info": {
+    "displayName": "Contact data",
+    "icon": "user",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "emailAddress": {
+      "type": "email"
+    },
+    "address": {
+      "displayName": "AddressForLocation",
+      "type": "component",
+      "repeatable": false,
+      "component": "my-components.address-for-location"
+    }
+  }
+}
